@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1 th:text="${messageOrder}"></h1>
+<h1>Add Book:</h1>
+
+<form th:action="@{/orders}" th:object="${order}" method="post">
+    <p><input type="text" th:field="*{author}" placeholder="city name" /></p>
+    <p><input type="text" th:field="*{title}" placeholder="population" /></p>
+    <p><input type="submit" value="Add City" /></p>
+</form>
+
+<h1>Edit Book:</h1>
+<form th:action="@{/orders/update}" th:object="${order}" method="get">
+    <p><input type="number" th:field="*{orderid}" placeholder="bookid" /></p>
+    <p><input type="text" th:field="*{author}" placeholder="author" /></p>
+    <p><input type="text" th:field="*{title}" placeholder="title" /></p>
+    <p><input type="submit" value="Edit City" /></p>
+</form>
+
+<h1>Delete Book:</h1>
+<form th:action="@{/orders/delete}" th:object="${order}" method="get">
+    <p><input type="number" th:field="*{orderid}" placeholder="bookid" /></p>
+    <p><input type="submit" value="Delete City" /></p>
+</form>
+
+<h1>Get Book:</h1>
+<form th:action="@{/orders}" th:object="${order}" method="get">
+    <p><input type="number" th:field="*{orderid}" placeholder="bookid" /></p>
+    <p><input type="submit" value="Get one" /></p>
+
+</form>
+
+
+<a th:href="@{/orders/all}">List all Books</a></body>
+</html>
